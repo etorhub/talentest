@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Ad } from '../models';
-import { AddOrEditCard } from '../components/AdForm';
+import { AdForm } from '../components';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppState } from '../state';
 
@@ -21,7 +21,7 @@ const initialState = (productId: string): Ad => ({
 
 function CreateView({ productId, handleClose }: CreateViewProps) {
   const [adForm, setAdForm] = useState<Ad>(initialState(productId));
-  const [_, actions] = useAppState();
+  const { actions } = useAppState();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ function CreateView({ productId, handleClose }: CreateViewProps) {
   };
 
   return (
-    <AddOrEditCard
+    <AdForm
       handleClose={handleClose}
       handleSubmit={handleSubmit}
       adForm={adForm}

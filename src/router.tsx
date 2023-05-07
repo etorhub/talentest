@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import IndexView from './pages/IndexView';
-import ReadView from './pages/ReadView';
-import NavigationView from './pages/NavigationView';
+import { IndexView, ReadView, NavigationView } from './pages';
 import { AppStateProvider } from './state/AppState';
+import { ErrorBoundary } from './utils';
 
 export const routes = {
   root: '/',
@@ -12,13 +11,16 @@ export const routes = {
 
 export const AppRouter = () => (
   <BrowserRouter>
-    <AppStateProvider>
-      <NavigationView />
-      <Routes>
-        <Route path={routes.root} element={<IndexView />} />
-        <Route path={routes.products} element={<IndexView />} />
-        <Route path={routes.product} element={<ReadView />} />
-      </Routes>
-    </AppStateProvider>
+    <ErrorBoundary>
+      <AppStateProvider>
+        <NavigationView />
+        <Routes>
+          <Route path={routes.root} element={<IndexView />} />
+          <Route path={routes.products} element={<IndexView />} />
+          <Route path={routes.product} element={<ReadView />} />
+          {/* handle route not found */}
+        </Routes>
+      </AppStateProvider>
+    </ErrorBoundary>
   </BrowserRouter>
 );

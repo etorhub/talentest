@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import AdCard from '../components/AdCard';
+import { AdCard } from '../components';
 import { Product, Ad } from '../models';
-import CreateView from './CreateView';
-import EditView from './EditView';
-import DeleteView from './DeleteView';
 import { useAppState } from '../state';
+import { CreateView, EditView, DeleteView } from '.';
 
 type Params = {
   productId: string;
@@ -13,7 +11,7 @@ type Params = {
 
 const ReadView = () => {
   const { productId } = useParams<Params>();
-  const [state] = useAppState();
+  const { state } = useAppState();
   const [selectedAd, setSelectedAd] = useState<Ad | undefined>(undefined);
   const [showModal, setShowModal] = useState<
     false | 'create' | 'edit' | 'delete'

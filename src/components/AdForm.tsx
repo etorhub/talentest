@@ -1,13 +1,14 @@
-import { useEscapeKey } from '../hooks/useEscapeKey';
+import { useEscapeKey } from '../hooks';
 
-type AddOrEditCardProps = {
+interface AddOrEditCardProps {
   adForm: any;
   setAdForm: any;
   handleSubmit: any;
   handleClose: () => void;
   type: 'Create' | 'Edit';
-};
-export const AddOrEditCard = ({
+}
+
+const AddOrEditCard = ({
   adForm,
   setAdForm,
   handleSubmit,
@@ -174,3 +175,5 @@ export const AddOrEditCard = ({
     </div>
   );
 };
+
+export default AddOrEditCard;

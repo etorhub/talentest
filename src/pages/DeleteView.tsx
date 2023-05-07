@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { routes } from '../router';
-import { useEscapeKey } from '../hooks/useEscapeKey';
+import { useEscapeKey } from '../hooks';
 import { useAppState } from '../state';
 
 interface DeleteViewProps {
@@ -9,7 +7,7 @@ interface DeleteViewProps {
 }
 
 const DeleteView = ({ id, handleClose }: DeleteViewProps) => {
-  const [_, actions] = useAppState();
+  const { actions } = useAppState();
 
   const handleDelete = async () => {
     try {

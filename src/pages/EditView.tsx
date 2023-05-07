@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Ad } from '../models';
-import { AddOrEditCard } from '../components/AdForm';
-import { useAppState } from '../state/AppState';
+import { AdForm } from '../components';
+import { useAppState } from '../state';
 
 interface EditViewProps {
   handleClose: () => void;
@@ -10,7 +10,7 @@ interface EditViewProps {
 
 function EditView({ handleClose, ad }: EditViewProps) {
   const [adForm, setAdForm] = useState<Ad>(ad);
-  const [_, actions] = useAppState();
+  const { actions } = useAppState();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ function EditView({ handleClose, ad }: EditViewProps) {
   };
 
   return (
-    <AddOrEditCard
+    <AdForm
       handleClose={handleClose}
       handleSubmit={handleSubmit}
       adForm={adForm}

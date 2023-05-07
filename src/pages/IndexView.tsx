@@ -1,9 +1,9 @@
-import ProductCard from '../components/ProductCard';
 import { useNavigate } from 'react-router-dom';
+import { ProductCard } from '../components';
 import { useAppState } from '../state';
 
 const IndexView = () => {
-  const [state] = useAppState();
+  const { state } = useAppState();
   const navigate = useNavigate();
   const handleProductClick = (id: string) => {
     navigate(`/product/${id}`);

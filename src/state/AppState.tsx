@@ -2,18 +2,18 @@ import React, { useCallback, useContext, useState } from 'react';
 import { Ad, Product } from '../models';
 import { fetchAds, fetchProducts } from '../data/fetchers';
 
-type AppState = {
+export type AppState = {
   products: Product[];
   ads: Ad[];
 };
 
-type AppActions = {
+export type AppActions = {
   addAd: (ad: Ad) => void;
   updateAd: (ad: Ad) => void;
   deleteAd: (id: string) => void;
 };
 
-type AppStateContext = [AppState, AppActions];
+type AppStateContext = { state: AppState; actions: AppActions };
 
 const AppStateContext = React.createContext<AppStateContext>(
   {} as AppStateContext
@@ -54,11 +54,11 @@ export function AppStateProvider({
     });
   }, []);
 
-  const appState = { products, ads };
-  const appActions = { addAd, updateAd, deleteAd };
+  const state = { products, ads };
+  const actions = { addAd, updateAd, deleteAd };
 
   return (
-    <AppStateContext.Provider value={[appState, appActions]}>
+    <AppStateContext.Provider value={{ state, actions }}>
       {children}
     </AppStateContext.Provider>
   );
