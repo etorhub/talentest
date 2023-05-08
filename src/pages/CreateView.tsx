@@ -23,7 +23,7 @@ function CreateView({ productId, handleClose }: CreateViewProps) {
   const [adForm, setAdForm] = useState<Ad>(initialState(productId));
   const { actions } = useAppState();
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     // handle creating the ad
     actions.addAd(adForm);
