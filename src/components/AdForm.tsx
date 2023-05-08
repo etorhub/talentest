@@ -1,9 +1,10 @@
 import { useEscapeKey } from '../hooks';
+import { Ad } from '../models';
 
 interface AddOrEditCardProps {
-  adForm: any;
-  setAdForm: any;
-  handleSubmit: any;
+  adForm: Ad;
+  setAdForm: (ad: Ad) => void;
+  handleSubmit: (e: React.SyntheticEvent) => void;
   handleClose: () => void;
   type: 'Create' | 'Edit';
 }
